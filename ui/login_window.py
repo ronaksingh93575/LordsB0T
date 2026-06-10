@@ -12,12 +12,15 @@ class LoginWindow:
         self.root.title("Farming Bot Login")
         self.root.geometry("500x350")
         self.root.resizable(False, False)
+        self.root.configure(bg="#2E2E2E")
 
         # Title
         title = tk.Label(
             root,
             text="Farming Bot",
-            font=("Arial", 20, "bold")
+            font=("Arial", 20, "bold"),
+            fg=("#D5D5D5"),
+            bg=("#2E2E2E")
         )
         title.pack(pady=20)
 
@@ -25,7 +28,9 @@ class LoginWindow:
         username_label = tk.Label(
             root,
             text="Username",
-            font=("Arial", 12)
+            font=("Times new roman", 12),
+            fg=("#D5D5D5"),
+            bg=("#2E2E2E")
         )
         username_label.pack()
 
@@ -33,7 +38,9 @@ class LoginWindow:
         self.username_entry = tk.Entry(
             root,
             width=30,
-            font=("Arial", 12)
+            font=("Times new roman", 12),
+            fg=("#323232"),
+            bg=("#CBCBCB")
         )
         self.username_entry.pack(pady=5)
 
@@ -41,7 +48,9 @@ class LoginWindow:
         password_label = tk.Label(
             root,
             text="Password",
-            font=("Arial", 12)
+            font=("Times new roman", 12),
+            fg=("#D0D0D0"),
+            bg=("#2E2E2E")
         )
         password_label.pack()
 
@@ -49,7 +58,9 @@ class LoginWindow:
         self.password_entry = tk.Entry(
             root,
             width=30,
-            font=("Arial", 12),
+            font=("Times new roman", 12),
+            fg=("#323232"),
+            bg=("#CBCBCB"),
             show="*"
         )
         self.password_entry.pack(pady=5)
@@ -67,7 +78,9 @@ class LoginWindow:
         self.status_label = tk.Label(
             root,
             text="Please Login",
-            fg="blue"
+            font=("Arial", 11, "bold"),
+            fg=("#D5D5D5"),
+            bg=("#2E2E2E")
         )
         self.status_label.pack()
 
