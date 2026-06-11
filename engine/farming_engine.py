@@ -4,10 +4,11 @@ import time
 
 class FarmingEngine:
 
-    def __init__(self):
+    def __init__(self, logcallback=None):
 
         self.running = False
         self.thread = None
+        self.logcallback = logcallback
 
     def bot_loop(self):
 
@@ -41,3 +42,9 @@ class FarmingEngine:
     def stop(self):
 
         self.running = False
+
+    def log(self, message):
+
+        if self.log_callback:
+        
+            self.log_callback(message)

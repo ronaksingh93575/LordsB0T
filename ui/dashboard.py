@@ -32,18 +32,18 @@ class Dashboard:
         # ==========================
         # HEADER
         # ==========================
-        header = tk.Frame(self.root)
-        header.pack(fill="x", pady=10)
+        # header = tk.Frame(self.root)
+        # header.pack(fill="x", pady=10)
 
-        title = tk.Label(
-            header,
-            text="Farming Bot Dashboard",
-            font=("Arial", 18, "bold"),
-            fg=("#D5D5D5"),
-            bg=("#2E2E2E")
+        # title = tk.Label(
+        #     header,
+        #     text="Farming Bot Dashboard",
+        #     font=("Arial", 18, "bold"),
+        #     fg=("#D5D5D5"),
+        #     bg=("#2E2E2E")
 
-        )
-        title.pack()
+        # )
+        # title.pack()
         
 
         # ==========================
@@ -231,6 +231,9 @@ class Dashboard:
         self.add_log(
             "Automatic Task Started."
         )
+
+        # farming engine task
+        FarmingEngine().start()
 
         print(
             "Automatic Task Running..."
