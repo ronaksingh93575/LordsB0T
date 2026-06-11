@@ -1,8 +1,20 @@
-import pyautogui
+from vision.image_finder import find_image
+from vision.clicker import click
 
 
-def execute():
+def run():
 
-    pyautogui.click(500, 300)
+    location = find_image(
+        "images/colosseum.png"
+    )
 
-    print("Colosseum Opened")
+    if location:
+
+        click(
+            location[0],
+            location[1]
+        )
+
+        return True
+
+    return False

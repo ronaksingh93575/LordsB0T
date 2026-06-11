@@ -1,4 +1,6 @@
 import tkinter as tk
+import sqlite3
+from database.db import DATABASE_PATH
 
 
 class SettingsWindow:
@@ -54,5 +56,32 @@ class SettingsWindow:
         ).pack(pady=20)
 
     def save_settings(self):
+        
+        conn = sqlite3.connect(DATABASE_PATH)
+        cursor = conn.cursor()
+
+        cursor.execute(
+            """
+            UPDATE settings
+            SET
+            auto_colosseum=?,
+            auto_gathering=?,
+            auto_training=?,
+            auto_healing=?,
+            auto_collecting=?
+            WHERE username=?
+            """,
+            (
+                self.auto_colosseum.get(),
+                self.auto_gathering.get(),
+                self.auto_training.get(),
+                self.auto_healing.get(),
+                self.auto_collecting.get(),
+                self.username
+            )
+        )
+
+        conn.commit()
+        conn.close()
 
         print("Settings Saved")

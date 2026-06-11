@@ -17,7 +17,7 @@ class Dashboard:
         self.root.title("Farming Bot Dashboard")
         self.root.geometry("700x600")
         self.root.resizable(True, True)
-        self.root.configure(bg="#2E2E2E")
+        self.root.configure(bg="#000000")
 
         self.bot_running = False
 
@@ -52,8 +52,8 @@ class Dashboard:
         info_frame = tk.LabelFrame(
             self.root,
             text="User Information",
-            fg=("#CBCBCB"),
-            bg=("#323232")
+            fg=("#FFFFFF"),
+            bg=("#000000")
         )
         info_frame.pack(fill="x", padx=20, pady=10)
 
@@ -61,8 +61,8 @@ class Dashboard:
             info_frame,
             text=f"Username: {self.username}",
             font=("Arial", 11),
-            fg=("#CBCBCB"),
-            bg=("#323232")
+            fg=("#ffffff"),
+            bg=("#000000")
         ).pack(anchor="w", padx=10, pady=5)
 
         # ==========================
@@ -71,8 +71,8 @@ class Dashboard:
         control_frame = tk.LabelFrame(
             self.root,
             text="Bot Controls",
-            fg=("#CBCBCB"),
-            bg=("#323232")
+            fg=("#ffffff"),
+            bg=("#000000")
         )
         control_frame.pack(fill="x", padx=20, pady=10)
 
@@ -80,7 +80,7 @@ class Dashboard:
             control_frame,
             text="Status: Stopped",
             fg="red",
-            bg=("#323232"),
+            bg=("#000000"),
             font=("Arial", 11, "bold")
         )
         self.status_label.pack(pady=10)
@@ -89,7 +89,7 @@ class Dashboard:
             control_frame,
             text="Start Bot",
             width=15,
-            bg=("#CBCBCB"),
+            bg=("#ffffff"),
             command=self.start_bot
         )
         start_btn.pack(side="left", padx=20, pady=10)
@@ -98,7 +98,7 @@ class Dashboard:
             control_frame,
             text="Stop Bot",
             width=15,
-            bg=("#CBCBCB"),
+            bg=("#ffffff"),
             command=self.stop_bot
         )
         stop_btn.pack(side="left", padx=10)
@@ -110,8 +110,8 @@ class Dashboard:
         task_frame = tk.LabelFrame(
             self.root,
             text="Automatic Tasks",
-            fg=("#CBCBCB"),
-            bg=("#323232")
+            fg=("#ffffff"),
+            bg=("#000000")
         )
 
         task_frame.pack(fill="x",padx=20,pady=10)
@@ -120,7 +120,7 @@ class Dashboard:
             task_frame,
             text = "Start Automatic Tasks",
             width = 20,
-            bg=("#CBCBCB"),
+            bg=("#ffffff"),
 
             command=self.start_automatic_task
         ).pack(side = "left", padx=20, pady=10)
@@ -131,8 +131,8 @@ class Dashboard:
         feature_frame = tk.LabelFrame(
             self.root,
             text="Features",
-            fg=("#CBCBCB"),
-            bg=("#323232")
+            fg=("#ffffff"),
+            bg=("#000000")
         )
         feature_frame.pack(fill="x", padx=20, pady=10)
 
@@ -140,7 +140,7 @@ class Dashboard:
             feature_frame,
             text="Settings",
             width=20,
-            bg=("#CBCBCB"),
+            bg=("#ffffff"),
             command=self.open_settings
         ).pack(side="left", padx=20, pady=10)
 
@@ -148,7 +148,7 @@ class Dashboard:
             feature_frame,
             text="Logs",
             width=20,
-            bg=("#CBCBCB"),
+            bg=("#ffffff"),
             command=self.open_logs
         ).pack(side="left", padx=10)
 
@@ -158,8 +158,8 @@ class Dashboard:
         log_frame = tk.LabelFrame(
             self.root,
             text="Activity",
-            fg=("#CBCBCB"),
-            bg=("#323232")
+            fg=("#ffffff"),
+            bg=("#000000")
         )
         log_frame.pack(
             fill="both",
@@ -172,7 +172,7 @@ class Dashboard:
         self.log_box = tk.Text(
             log_frame,
             height=10,
-            bg=("#CBCBCB"),
+            bg=("#ffffff"),
 
         )
         self.log_box.pack(
