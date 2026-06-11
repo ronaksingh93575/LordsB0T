@@ -6,6 +6,8 @@ from ui.launch_terminate import launch
 from ui.launch_terminate import kill_process_by_name
 from engine.task_manager import TaskManager
 from ui.settings import SettingsWindow
+from utils.logger import Logger
+
 
 class Dashboard:
 
@@ -182,7 +184,13 @@ class Dashboard:
             pady=10
         )
 
-        self.add_log("Dashboard loaded.")
+        Logger.set_callback(
+            self.add_log
+        )
+
+        Logger.log(
+            "Welcome to the Farming Bot Dashboard!"
+        )
 
     def add_log(self, message):
 
@@ -209,8 +217,8 @@ class Dashboard:
                 fg="green"
             )
 
+            Logger.log("Bot Started.")
 
-        self.add_log("Bot Started.")
     def stop_bot(self):
 
         if self.bot_running:
@@ -224,16 +232,15 @@ class Dashboard:
                 fg="red"
             )
 
-            self.add_log("Bot Stopped.")
+            Logger.log("Bot Stopped.")
 
     def start_automatic_task(self):
 
-        self.add_log(
-            "Automatic Task Started."
-        )
+        Logger.log("Starting Automatic Tasks...")
 
         # farming engine task
         FarmingEngine().start()
+        # self.engine.start()
 
         print(
             "Automatic Task Running..."
@@ -244,7 +251,8 @@ class Dashboard:
 
         settings_window = tk.Toplevel()
         SettingsWindow(
-            settings_window
+            settings_window,
+            self.username
         )
 
     def open_logs(self):
