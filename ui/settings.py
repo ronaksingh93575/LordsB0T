@@ -81,3 +81,4 @@ class SettingsWindow:
 
         Logger.log("Settings saved successfully!")
 
+
