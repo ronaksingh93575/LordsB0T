@@ -21,7 +21,7 @@ def run():
     )
 
     location = find_image(
-        "images/cross_bundle.png"
+        "images/close_bundle.png"
     )
 
     if location:
