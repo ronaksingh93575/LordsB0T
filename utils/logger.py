@@ -23,3 +23,9 @@ class Logger:
 
         if cls.callback:
             cls.callback(final_message)
+
+        with open("logs/activity.log",
+                   "a",
+                   encoding="utf-8"
+                ) as log_file:
+            log_file.write(final_message + "\n")
