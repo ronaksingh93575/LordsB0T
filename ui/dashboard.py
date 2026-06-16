@@ -1,5 +1,17 @@
+import sys
+import os
+
+sys.path.append(
+    os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
+)
+
 import threading
 import tkinter as tk
+import queue
 from tkinter import messagebox
 from engine.farming_engine import FarmingEngine
 from ui.launch_terminate import launch
@@ -15,6 +27,7 @@ class Dashboard:
 
         self.root = root
         self.username = username
+        self.log_queue = queue.Queue()
 
         self.root.title("Farming Bot Dashboard")
         self.root.geometry("700x600")
@@ -185,8 +198,10 @@ class Dashboard:
         )
 
         Logger.set_callback(
-            self.add_log
+            self.log_queue.put
         )
+
+        self.process_logs()
 
         Logger.log(
             "Welcome to the Farming Bot Dashboard!"
@@ -194,11 +209,16 @@ class Dashboard:
 
     def add_log(self, message):
 
+        self.root.after(
+            0,
+            lambda: self._append_log(message)
+        )
+
+    def _append_log(self, message):
         self.log_box.insert(
             tk.END,
             f"{message}\n"
         )
-
         self.log_box.see(tk.END)
 
     def start_bot(self):
@@ -260,4 +280,22 @@ class Dashboard:
         messagebox.showinfo(
             "Logs",
             "Logs window coming soon."
+        )
+
+    def process_logs(self):
+
+        while not self.log_queue.empty():
+
+            message = self.log_queue.get()
+
+            self.log_box.insert(
+                tk.END,
+                f"{message}\n"
+            )
+
+            self.log_box.see(tk.END)
+
+        self.root.after(
+            100,
+            self.process_logs
         )

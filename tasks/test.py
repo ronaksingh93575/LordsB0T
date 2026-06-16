@@ -1,31 +1,31 @@
-import sys
-import os
+# import sys
+# import os
 
-sys.path.append(
-    os.path.dirname(
-        os.path.dirname(
-            os.path.abspath(__file__)
-        )
-    )
-)
+# sys.path.append(
+#     os.path.dirname(
+#         os.path.dirname(
+#             os.path.abspath(__file__)
+#         )
+#     )
+# )
 
 
-from vision.image_finder import find_image
-from vision.clicker import click
+# from vision.image_finder import find_image
+# from vision.clicker import click
 
-location = find_image(
-    "images/close_bundle.png"
-)
+# location = find_image(
+#     "images/close_bundle.png"
+# )
 
-if location:
+# if location:
 
-    click(
-        location[0],
-        location[1]
-    )
+#     click(
+#         location[0],
+#         location[1]
+#     )
 
-    print("Clicked")
+#     print("Clicked")
 
-else:
+# else:
 
-    print("Not Found")
+#     print("Not Found")

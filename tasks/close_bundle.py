@@ -1,3 +1,14 @@
+import sys
+import os
+
+sys.path.append(
+    os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
+)
+
 from utils.logger import Logger
 from vision.image_finder import find_image
 from vision.clicker import click
