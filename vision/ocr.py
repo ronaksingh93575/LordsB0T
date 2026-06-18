@@ -1,4 +1,5 @@
 import easyocr
+import numpy as np
 
 reader = easyocr.Reader(
     ['en'],
@@ -6,11 +7,11 @@ reader = easyocr.Reader(
 )
 
 
-def read_text(image_path):
+def read_image(image):
 
-    result = reader.readtext(
-        image_path,
+    image = np.array(image)
+
+    return reader.readtext(
+        image,
         detail=0
     )
-
-    return result

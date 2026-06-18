@@ -1,4 +1,5 @@
 import tkinter as tk
+import pygetwindow as gw
 
 from ui.login_window import LoginWindow
 from database.db import create_database

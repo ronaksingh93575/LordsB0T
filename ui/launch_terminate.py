@@ -1,10 +1,28 @@
 import subprocess
 import time
+import pygetwindow as gw
+
+def position_game():
+    windows = gw.getWindowsWithTitle(
+    "Lords Mobile PC"
+    )
+    if not windows:
+        return False
+    
+    game = windows[0]
+    game.restore()
+    game.moveTo(
+        0,0
+    )
+    game.resizeTo(
+        1024,576
+    )
+    game.activate()
+    return True
 
 def launch():
     #launch the application
     subprocess.Popen(["C:\\Users\\ronak_8q45q08\\AppData\\Roaming\\IGG\\Lords Mobile PC\\Lords Mobile Updater.exe"])
-
 
 #terminate the application
 

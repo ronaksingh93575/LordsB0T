@@ -1,3 +1,14 @@
+import sys
+import os
+
+sys.path.append(
+    os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
+)
+
 import tkinter as tk
 import sqlite3
 from database.db import DATABASE_PATH
@@ -14,8 +25,10 @@ class SettingsWindow:
 
         self.root.title("Bot Settings")
         self.root.geometry("400x300")
+        self.root.resizable(True, True)
+        self.root.configure(bg="#201E1E")
         
-
+        self.check_shield = tk.BooleanVar()
         self.auto_colosseum = tk.BooleanVar()
         self.auto_gathering = tk.BooleanVar()
         self.auto_training = tk.BooleanVar()
@@ -23,6 +36,12 @@ class SettingsWindow:
         self.auto_collecting = tk.BooleanVar()
 
         self.load_settings()
+        
+        tk.Checkbutton(
+            root,
+            text="Check Shield",
+            variable=self.check_shield
+        ).pack(anchor="w", padx=20, pady=5)
 
         tk.Checkbutton(
             root,
@@ -63,6 +82,7 @@ class SettingsWindow:
     def load_settings(self):
         settings = get_user_settings(self.username)
         if settings:
+            self.check_shield.set(settings["check_shield"])
             self.auto_colosseum.set(settings["auto_colosseum"])
             self.auto_gathering.set(settings["auto_gathering"])
             self.auto_training.set(settings["auto_training"])
@@ -72,6 +92,7 @@ class SettingsWindow:
     def save(self):
         save_settings(
             self.username,
+            self.check_shield.get(),
             self.auto_colosseum.get(),
             self.auto_gathering.get(),
             self.auto_training.get(),

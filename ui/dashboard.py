@@ -32,7 +32,7 @@ class Dashboard:
         self.root.title("Farming Bot Dashboard")
         self.root.geometry("700x600")
         self.root.resizable(True, True)
-        self.root.configure(bg="#000000")
+        self.root.configure(bg="#201E1E")
 
         self.bot_running = False
 
@@ -68,7 +68,7 @@ class Dashboard:
             self.root,
             text="User Information",
             fg=("#FFFFFF"),
-            bg=("#000000")
+            bg=("#201E1E")
         )
         info_frame.pack(fill="x", padx=20, pady=10)
 
@@ -77,7 +77,7 @@ class Dashboard:
             text=f"Username: {self.username}",
             font=("Arial", 11),
             fg=("#ffffff"),
-            bg=("#000000")
+            bg=("#201E1E")
         ).pack(anchor="w", padx=10, pady=5)
 
         # ==========================
@@ -87,7 +87,7 @@ class Dashboard:
             self.root,
             text="Bot Controls",
             fg=("#ffffff"),
-            bg=("#000000")
+            bg=("#201E1E")
         )
         control_frame.pack(fill="x", padx=20, pady=10)
 
@@ -95,7 +95,7 @@ class Dashboard:
             control_frame,
             text="Status: Stopped",
             fg="red",
-            bg=("#000000"),
+            bg=("#201E1E"),
             font=("Arial", 11, "bold")
         )
         self.status_label.pack(pady=10)
@@ -126,7 +126,7 @@ class Dashboard:
             self.root,
             text="Automatic Tasks",
             fg=("#ffffff"),
-            bg=("#000000")
+            bg=("#201E1E")
         )
 
         task_frame.pack(fill="x",padx=20,pady=10)
@@ -147,7 +147,7 @@ class Dashboard:
             self.root,
             text="Features",
             fg=("#ffffff"),
-            bg=("#000000")
+            bg=("#201E1E")
         )
         feature_frame.pack(fill="x", padx=20, pady=10)
 
@@ -174,7 +174,7 @@ class Dashboard:
             self.root,
             text="Activity",
             fg=("#ffffff"),
-            bg=("#000000")
+            bg=("#201E1E")
         )
         log_frame.pack(
             fill="both",
@@ -238,6 +238,7 @@ class Dashboard:
             )
 
             Logger.log("Bot Started.")
+
 
     def stop_bot(self):
 

@@ -14,6 +14,10 @@ import threading
 import time
 from utils.logger import Logger
 from tasks.close_bundle import run as close_bundle
+from ui.launch_terminate import position_game
+from ui.settings import SettingsWindow
+
+
 
 
 
@@ -29,10 +33,17 @@ class FarmingEngine:
 
         while self.running:
 
+            Logger.log("Setting Up things")
+            position_game()
+            Logger.log("Adjusted Location and size..")
+
             Logger.log("Searching bundle popup...")
             close_bundle()
 
             time.sleep(5)
+
+            # if SettingsWindow["check_shield"]:
+                # check_shield.run()
 
             print("Sending troops...")
 

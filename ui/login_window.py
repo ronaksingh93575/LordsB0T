@@ -12,7 +12,7 @@ class LoginWindow:
         self.root.title("Farming Bot Login")
         self.root.geometry("500x350")
         self.root.resizable(False, False)
-        self.root.configure(bg="#2E2E2E")
+        self.root.configure(bg="#201E1E")
 
         # Title
         title = tk.Label(
@@ -20,7 +20,7 @@ class LoginWindow:
             text="Farming Bot",
             font=("Arial", 20, "bold"),
             fg=("#D5D5D5"),
-            bg=("#2E2E2E")
+            bg=("#201E1E")
         )
         title.pack(pady=20)
 
@@ -30,7 +30,7 @@ class LoginWindow:
             text="Username",
             font=("Times new roman", 12),
             fg=("#D5D5D5"),
-            bg=("#2E2E2E")
+            bg=("#201E1E")
         )
         username_label.pack()
 
@@ -50,7 +50,7 @@ class LoginWindow:
             text="Password",
             font=("Times new roman", 12),
             fg=("#D0D0D0"),
-            bg=("#2E2E2E")
+            bg=("#201E1E")
         )
         password_label.pack()
 
@@ -80,7 +80,7 @@ class LoginWindow:
             text="Please Login",
             font=("Arial", 11, "bold"),
             fg=("#D5D5D5"),
-            bg=("#2E2E2E")
+            bg=("#201E1E")
         )
         self.status_label.pack()
 
