@@ -257,6 +257,7 @@ class Dashboard:
         if self.bot_running:
 
             self.bot_running = False
+            self.engine.stop()
 
             kill_process_by_name()
 
@@ -275,9 +276,6 @@ class Dashboard:
         # FarmingEngine().start()
         self.engine.start()
 
-        print(
-            "Automatic Task Running..."
-        )
 
 
     def open_settings(self):

@@ -40,36 +40,66 @@ class SettingsWindow:
         tk.Checkbutton(
             root,
             text="Check Shield",
+            fg="#FFFFFF",
+            bg="#201E1E",
+            selectcolor="#201E1E",
+            activebackground="#201E1E",
+            activeforeground="#FFFFFF",
             variable=self.check_shield
         ).pack(anchor="w", padx=20, pady=5)
 
         tk.Checkbutton(
             root,
             text="Auto Colosseum",
+            fg="#FFFFFF",
+            bg="#201E1E",
+            selectcolor="#201E1E",
+            activebackground="#201E1E",
+            activeforeground="#FFFFFF",
             variable=self.auto_colosseum
         ).pack(anchor="w", padx=20, pady=5)
 
         tk.Checkbutton(
             root,
             text="Auto Gathering",
+            fg="#FFFFFF",
+            bg="#201E1E",
+            selectcolor="#201E1E",
+            activebackground="#201E1E",
+            activeforeground="#FFFFFF",
             variable=self.auto_gathering
         ).pack(anchor="w", padx=20, pady=5)
 
         tk.Checkbutton(
             root,
             text="Auto Training",
+            fg="#FFFFFF",
+            bg="#201E1E",
+            selectcolor="#201E1E",
+            activebackground="#201E1E",
+            activeforeground="#FFFFFF",
             variable=self.auto_training
         ).pack(anchor="w", padx=20, pady=5)
 
         tk.Checkbutton(
             root,
             text="Auto Healing",
+            fg="#FFFFFF",
+            bg="#201E1E",
+            selectcolor="#201E1E",
+            activebackground="#201E1E",
+            activeforeground="#FFFFFF",
             variable=self.auto_healing
         ).pack(anchor="w", padx=20, pady=5)
 
         tk.Checkbutton(
             root,
             text="Auto Collecting",
+            fg="#FFFFFF",
+            bg="#201E1E",
+            selectcolor="#201E1E",
+            activebackground="#201E1E",
+            activeforeground="#FFFFFF",
             variable=self.auto_collecting
         ).pack(anchor="w", padx=20, pady=5)
 

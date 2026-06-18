@@ -81,7 +81,7 @@ class FarmingEngine:
             print("Sending troops...")
 
             time.sleep(2)
-            
+
             if not self.running:
                 break            
 
@@ -109,6 +109,8 @@ class FarmingEngine:
     def stop(self):
 
         self.running = False
+
+        Logger.log("Farming Engine Stopping...")
 
     def log(self, message):
 
