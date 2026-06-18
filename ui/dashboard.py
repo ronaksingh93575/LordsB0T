@@ -19,6 +19,7 @@ from ui.launch_terminate import kill_process_by_name
 from engine.task_manager import TaskManager
 from ui.settings import SettingsWindow
 from utils.logger import Logger
+from database.db import get_shield_status
 
 
 class Dashboard:
@@ -30,13 +31,13 @@ class Dashboard:
         self.log_queue = queue.Queue()
 
         self.root.title("Farming Bot Dashboard")
-        self.root.geometry("700x600")
+        self.root.geometry("1024x576")
         self.root.resizable(True, True)
         self.root.configure(bg="#201E1E")
 
         self.bot_running = False
 
-        self.engine = FarmingEngine()
+        self.engine = FarmingEngine(self.username)
 
         self.task_manager = TaskManager()
 
@@ -99,6 +100,15 @@ class Dashboard:
             font=("Arial", 11, "bold")
         )
         self.status_label.pack(pady=10)
+
+        self.shield_label = tk.Label(
+            control_frame,
+            text="Shield: Unknown",
+            fg="cyan",
+            bg="#000000",
+            font=("Arial", 10)
+        )
+        self.shield_label.pack(pady=5)
 
         start_btn = tk.Button(
             control_frame,
@@ -207,6 +217,8 @@ class Dashboard:
             "Welcome to the Farming Bot Dashboard!"
         )
 
+        self.load_shield_status()
+
     def add_log(self, message):
 
         self.root.after(
@@ -260,8 +272,8 @@ class Dashboard:
         Logger.log("Starting Automatic Tasks...")
 
         # farming engine task
-        FarmingEngine().start()
-        # self.engine.start()
+        # FarmingEngine().start()
+        self.engine.start()
 
         print(
             "Automatic Task Running..."
@@ -300,3 +312,20 @@ class Dashboard:
             100,
             self.process_logs
         )
+    def load_shield_status(self):
+
+        data = get_shield_status(
+            self.username
+        )
+        if not data:
+            return
+        shield_active, shield_time = data
+
+        if shield_active:
+            self.shield_label.config(
+                text = f"Shield : {shield_time}"
+            )
+        else:
+            self.shield_label.config(
+                text="Shield: Not Active"
+            )
