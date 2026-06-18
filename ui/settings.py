@@ -24,7 +24,7 @@ class SettingsWindow:
         self.username = username
 
         self.root.title("Bot Settings")
-        self.root.geometry("400x300")
+        self.root.geometry("500x350")
         self.root.resizable(True, True)
         self.root.configure(bg="#201E1E")
         
