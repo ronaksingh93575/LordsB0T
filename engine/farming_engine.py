@@ -12,7 +12,7 @@ sys.path.append(
 
 import threading
 import time
-from utils.logger import Logger
+from logs.logger import Logger
 from tasks.close_bundle import run as close_bundle
 from ui.launch_terminate import position_game
 from database.supabase_db import get_user_settings

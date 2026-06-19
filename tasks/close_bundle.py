@@ -9,7 +9,7 @@ sys.path.append(
     )
 )
 
-from utils.logger import Logger
+from logs.logger import Logger
 from vision.image_finder import find_image
 from vision.clicker import click
 

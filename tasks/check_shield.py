@@ -14,7 +14,7 @@ import time
 import re
 from database.supabase_db import update_shield_status
 from tasks.back import execute
-from utils.logger import Logger
+from logs.logger import Logger
 from vision.image_finder import find_image
 from vision.screenshot import capture_region
 from vision.ocr import read_image

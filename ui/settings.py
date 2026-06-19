@@ -13,7 +13,7 @@ import tkinter as tk
 import sqlite3
 # from database.supabase_db import DATABASE_PATH
 from database.supabase_db import get_user_settings, save_settings
-from utils.logger import Logger
+from logs.logger import Logger
 
 
 class SettingsWindow:
@@ -70,8 +70,19 @@ class SettingsWindow:
             variable=self.auto_gathering
         ).pack(anchor="w", padx=20, pady=5)
 
+        #--------------------------------------------------
+        # creating a frame to train troops
+        #--------------------------------------------------
+
+        train_frame = tk.LabelFrame(
+            self.root,
+            text="Training",
+            bg=("#FFFFFF")
+        )
+        train_frame.pack(pady=10)
+        
         tk.Checkbutton(
-            root,
+            train_frame,
             text="Auto Training",
             fg="#FFFFFF",
             bg="#201E1E",
