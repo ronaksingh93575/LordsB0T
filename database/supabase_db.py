@@ -24,13 +24,38 @@ def authenticate_user(username, password):
 
     return len(result.data) > 0
 
-def add_user(username, password):
+def add_user(email, username, password):
+
     try:
-        supabase.table("users").insert({
+
+        print("Creating user...")
+
+        result = supabase.table("users").insert({
+            "email": email,
             "username": username,
-            "password": password
+            "password": password,
+            "role": "user",
+            "email_verified": False
         }).execute()
+
+        print("USER RESULT:")
+        print(result)
+
+        supabase.table("settings").insert({
+            "username": username
+        }).execute()
+
+        supabase.table("account_status").insert({
+            "username": username,
+            "shield_active": False,
+            "shield_time": "",
+            "shield_seconds": 0
+        }).execute()
+
+        print("User created successfully")
+
     except Exception as e:
+        print("ERROR:")
         print(e)
 
 def get_user_settings(username):
@@ -117,3 +142,31 @@ def get_shield_status(username):
         return result.data[0]
 
     return None
+
+
+#---------------------------------
+# unique username and emial for registration
+#---------------------------------
+def username_exists(username):
+
+    result = (
+        supabase
+        .table("users")
+        .select("username")
+        .eq("username", username)
+        .execute()
+    )
+
+    return len(result.data) > 0
+
+def email_exists(email):
+
+    result = (
+        supabase
+        .table("users")
+        .select("email")
+        .eq("email", email)
+        .execute()
+    )
+
+    return len(result.data) > 0

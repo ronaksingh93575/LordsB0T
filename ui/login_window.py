@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from database.supabase_db import authenticate_user
 from ui.dashboard import Dashboard
-
+from ui.signup_window import SignupWindow
 
 class LoginWindow:
 
@@ -10,7 +10,7 @@ class LoginWindow:
 
         self.root = root
         self.root.title("Farming Bot Login")
-        self.root.geometry("500x350")
+        self.root.geometry("500x400")
         self.root.resizable(False, False)
         self.root.configure(bg="#201E1E")
 
@@ -32,7 +32,10 @@ class LoginWindow:
             fg=("#D5D5D5"),
             bg=("#201E1E")
         )
-        username_label.pack()
+        username_label.pack(
+            anchor= "w",
+            padx =100
+        )
 
         # Username Entry
         self.username_entry = tk.Entry(
@@ -52,7 +55,10 @@ class LoginWindow:
             fg=("#D0D0D0"),
             bg=("#201E1E")
         )
-        password_label.pack()
+        password_label.pack(
+            anchor= "w",
+            padx =100
+        )
 
         # Password Entry
         self.password_entry = tk.Entry(
@@ -65,14 +71,39 @@ class LoginWindow:
         )
         self.password_entry.pack(pady=5)
 
+        #-------------------------------
+        # creating a frame for login and signup
+        #-------------------------------
+
+        button_frame = tk.Frame(
+            root,
+            bg="#201E1E"
+        )
+        button_frame.pack(pady=15)
+
         # Login Button
         login_btn = tk.Button(
-            root,
+            button_frame,
             text="Login",
             width=15,
             command=self.login
         )
-        login_btn.pack(pady=20)
+        login_btn.pack(
+            side ="left",
+            padx=10
+        )
+
+        #signup Button
+        sign_up_btn = tk.Button(
+            button_frame,
+            text="Sign Up",
+            width= 15,
+            command = self.sign_up
+        )
+        sign_up_btn.pack(
+            side = "right",
+            padx = 10
+        )
 
         # Status Label
         self.status_label = tk.Label(
@@ -108,4 +139,11 @@ class LoginWindow:
                 fg="red"
             )
     
-            
+    def sign_up(self):
+
+        signup_root = tk.Toplevel(
+            self.root
+        )
+        SignupWindow(
+            signup_root
+        )
