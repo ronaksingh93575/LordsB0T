@@ -19,7 +19,7 @@ from ui.launch_terminate import kill_process_by_name
 from engine.task_manager import TaskManager
 from ui.settings import SettingsWindow
 from utils.logger import Logger
-from database.db import get_shield_status
+from database.supabase_db import get_shield_status
 
 
 class Dashboard:

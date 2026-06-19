@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from database.db import authenticate_user
+from database.supabase_db import authenticate_user
 from ui.dashboard import Dashboard
 
 

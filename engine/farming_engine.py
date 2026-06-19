@@ -15,7 +15,7 @@ import time
 from utils.logger import Logger
 from tasks.close_bundle import run as close_bundle
 from ui.launch_terminate import position_game
-from database.db import get_user_settings
+from database.supabase_db import get_user_settings
 from tasks import check_shield
 
 

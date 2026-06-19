@@ -2,9 +2,9 @@ import tkinter as tk
 import pygetwindow as gw
 
 from ui.login_window import LoginWindow
-from database.db import create_database
+# from database.supabase_db import create_database
 
-create_database()
+# create_database()
 
 root = tk.Tk()
 

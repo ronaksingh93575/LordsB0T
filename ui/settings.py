@@ -11,8 +11,8 @@ sys.path.append(
 
 import tkinter as tk
 import sqlite3
-from database.db import DATABASE_PATH
-from database.db import get_user_settings, save_settings
+# from database.supabase_db import DATABASE_PATH
+from database.supabase_db import get_user_settings, save_settings
 from utils.logger import Logger
 
 

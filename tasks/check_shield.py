@@ -12,7 +12,7 @@ sys.path.append(
 import pyautogui
 import time
 import re
-from database.db import update_shield_status
+from database.supabase_db import update_shield_status
 from tasks.back import execute
 from utils.logger import Logger
 from vision.image_finder import find_image

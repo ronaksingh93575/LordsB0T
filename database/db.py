@@ -1,4 +1,4 @@
-import sqlite3
+""" import sqlite3
 import os
 
 DATABASE_PATH = "database/users.db"
@@ -272,3 +272,4 @@ if __name__ == "__main__":
 
     print("Database created successfully.")
 
+""""""
