@@ -14,6 +14,7 @@ import sqlite3
 # from database.supabase_db import DATABASE_PATH
 from database.supabase_db import get_user_settings, save_settings
 from logs.logger import Logger
+from tkinter import ttk
 
 
 class SettingsWindow:
@@ -77,20 +78,66 @@ class SettingsWindow:
         train_frame = tk.LabelFrame(
             self.root,
             text="Training",
-            bg=("#FFFFFF")
+            fg="#FFFFFF",
+            bg=("#515151")
         )
-        train_frame.pack(pady=10)
-        
+        train_frame.pack(
+            anchor="w",
+            padx=20,
+            pady=(5,0)
+            )
         tk.Checkbutton(
             train_frame,
             text="Auto Training",
             fg="#FFFFFF",
-            bg="#201E1E",
-            selectcolor="#201E1E",
-            activebackground="#201E1E",
+            bg="#515151",
+            selectcolor="#515151",
+            activebackground="#515151",
             activeforeground="#FFFFFF",
             variable=self.auto_training
-        ).pack(anchor="w", padx=20, pady=5)
+        ).pack(side="left", padx=20, pady=5)
+        
+        self.train_troop = tk.StringVar()
+
+        troop_selection = ttk.Combobox(
+            train_frame,
+            textvariable= self.train_troop,
+            state="readonly",
+            width = 20,
+            values=[
+
+                "T1 Infantry",
+                "T1 Ranged",
+                "T1 Cavalry",
+                "T1 Siege",
+
+                "T2 Infantry",
+                "T2 Ranged",
+                "T2 Cavalry",
+                "T2 Siege",
+
+                "T3 Infantry",
+                "T3 Ranged",
+                "T3 Cavalry",
+                "T3 Siege",
+
+                "T4 Infantry",
+                "T4 Ranged",
+                "T4 Cavalry",
+                "T4 Siege"
+                
+                ]
+        )
+        troop_selection.pack(
+            padx=20,
+            pady=5,
+            side="right"
+        )
+
+        
+        #----------------------------------------
+        # auto heal
+        #----------------------------------------
 
         tk.Checkbutton(
             root,
