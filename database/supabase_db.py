@@ -45,7 +45,14 @@ def get_user_settings(username):
     if result.data:
         return result.data[0]
 
-    return None
+    return {
+        "check_shield" : False,
+        "auto_colloseum": False,
+        "auto_gathering": False,
+        "auto_training": False,
+        "auto_healing": False,
+        "auto_collecting": False,
+    }
 
 def save_settings(
     username,
@@ -74,7 +81,8 @@ def save_settings(
 def update_shield_status(
     username,
     shield_active,
-    shield_time
+    shield_time,
+    shield_seconds
 ):
 
     supabase.table(
@@ -83,7 +91,8 @@ def update_shield_status(
 
         "username": username,
         "shield_active": shield_active,
-        "shield_time": shield_time
+        "shield_time": shield_time,
+        "shield_seconds" : shield_seconds
 
     }).execute()
 

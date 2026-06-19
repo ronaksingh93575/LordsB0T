@@ -107,8 +107,9 @@ def run(username):
         if current_time >= desired_second:
             update_shield_status(
                 username,
-                current_time,
-                image[0]
+                True,
+                image[0],
+                current_time
             )
             execute()
         else:
