@@ -174,7 +174,8 @@ def run(username):
             update_shield_status(
                 username,
                 1,
-                image[0]
+                image[0],
+                current_time
             )
 
             #back to home screen

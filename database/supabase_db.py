@@ -1,4 +1,5 @@
 from supabase import create_client
+from datetime import datetime
 
 SUPABASE_URL = "https://qmvwgzvnbiyadnlsvnkr.supabase.co"
 SUPABASE_KEY = "sb_publishable_yEaJq55BMdRBzScaiJ54rg_li3TWoV5"
@@ -73,7 +74,8 @@ def save_settings(
         "auto_gathering": auto_gathering,
         "auto_training": auto_training,
         "auto_healing": auto_healing,
-        "auto_collecting": auto_collecting
+        "auto_collecting": auto_collecting,
+
 
     }).execute()
     # print(response)
@@ -84,7 +86,6 @@ def update_shield_status(
     shield_time,
     shield_seconds
 ):
-
     supabase.table(
         "account_status"
     ).upsert({
@@ -92,7 +93,8 @@ def update_shield_status(
         "username": username,
         "shield_active": shield_active,
         "shield_time": shield_time,
-        "shield_seconds" : shield_seconds
+        "shield_seconds": shield_seconds,
+        "last_updated": datetime.utcnow().isoformat()
 
     }).execute()
 
