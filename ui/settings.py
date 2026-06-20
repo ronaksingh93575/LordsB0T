@@ -35,8 +35,11 @@ class SettingsWindow:
         self.auto_training = tk.BooleanVar()
         self.auto_healing = tk.BooleanVar()
         self.auto_collecting = tk.BooleanVar()
+        self.train_troop = tk.StringVar()
 
-        self.load_settings()
+        #--------------------------------------
+        # shield
+        #--------------------------------------
         
         tk.Checkbutton(
             root,
@@ -49,6 +52,10 @@ class SettingsWindow:
             variable=self.check_shield
         ).pack(anchor="w", padx=20, pady=5)
 
+        #--------------------------------------
+        # colosseum
+        #--------------------------------------
+
         tk.Checkbutton(
             root,
             text="Auto Colosseum",
@@ -60,20 +67,14 @@ class SettingsWindow:
             variable=self.auto_colosseum
         ).pack(anchor="w", padx=20, pady=5)
 
-        tk.Checkbutton(
-            root,
-            text="Auto Gathering",
-            fg="#FFFFFF",
-            bg="#201E1E",
-            selectcolor="#201E1E",
-            activebackground="#201E1E",
-            activeforeground="#FFFFFF",
-            variable=self.auto_gathering
-        ).pack(anchor="w", padx=20, pady=5)
 
         #--------------------------------------------------
         # creating a frame to train troops
         #--------------------------------------------------
+
+        #--------------------------------------
+        # auto train
+        #--------------------------------------
 
         train_frame = tk.LabelFrame(
             self.root,
@@ -86,26 +87,14 @@ class SettingsWindow:
             padx=20,
             pady=(5,0)
             )
-        tk.Checkbutton(
-            train_frame,
-            text="Auto Training",
-            fg="#FFFFFF",
-            bg="#515151",
-            selectcolor="#515151",
-            activebackground="#515151",
-            activeforeground="#FFFFFF",
-            variable=self.auto_training
-        ).pack(side="left", padx=20, pady=5)
         
-        self.train_troop = tk.StringVar()
-
-        troop_selection = ttk.Combobox(
+        self.train_troop = ttk.Combobox(
             train_frame,
             textvariable= self.train_troop,
             state="readonly",
             width = 20,
             values=[
-
+                "None",
                 "T1 Infantry",
                 "T1 Ranged",
                 "T1 Cavalry",
@@ -128,11 +117,38 @@ class SettingsWindow:
                 
                 ]
         )
-        troop_selection.pack(
+        self.train_troop.pack(
             padx=20,
             pady=5,
             side="right"
         )
+
+        tk.Checkbutton(
+            root,
+            text="Auto Gathering",
+            fg="#FFFFFF",
+            bg="#201E1E",
+            selectcolor="#201E1E",
+            activebackground="#201E1E",
+            activeforeground="#FFFFFF",
+            variable=self.auto_gathering
+        ).pack(anchor="w", padx=20, pady=5)
+
+        #--------------------------------------
+        # auto train
+        #--------------------------------------
+        
+        tk.Checkbutton(
+            train_frame,
+            text="Auto Training",
+            fg="#FFFFFF",
+            bg="#515151",
+            selectcolor="#515151",
+            activebackground="#515151",
+            activeforeground="#FFFFFF",
+            variable=self.auto_training
+        ).pack(side="left", padx=20, pady=5)
+        
 
         
         #----------------------------------------
@@ -149,6 +165,10 @@ class SettingsWindow:
             activeforeground="#FFFFFF",
             variable=self.auto_healing
         ).pack(anchor="w", padx=20, pady=5)
+
+        #--------------------------------------
+        # collect rewards
+        #--------------------------------------
 
         tk.Checkbutton(
             root,
@@ -167,6 +187,8 @@ class SettingsWindow:
             command=self.save
         ).pack(pady=20)
 
+        self.load_settings()
+
     def load_settings(self):
         settings = get_user_settings(self.username)
         if settings:
@@ -176,6 +198,10 @@ class SettingsWindow:
             self.auto_training.set(settings["auto_training"])
             self.auto_healing.set(settings["auto_healing"])
             self.auto_collecting.set(settings["auto_collecting"])
+            print(settings)
+            print(settings.keys())
+            self.train_troop.set(settings.get("train_troop",
+                                          "T1 Infantry"))
 
     def save(self):
         save_settings(
@@ -185,7 +211,8 @@ class SettingsWindow:
             self.auto_gathering.get(),
             self.auto_training.get(),
             self.auto_healing.get(),
-            self.auto_collecting.get()
+            self.auto_collecting.get(),
+            self.train_troop.get()
         )
 
         Logger.log("Settings saved successfully!")

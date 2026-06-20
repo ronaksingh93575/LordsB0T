@@ -42,7 +42,8 @@ def add_user(email, username, password):
         print(result)
 
         supabase.table("settings").insert({
-            "username": username
+            "username": username,
+            "train_troop" : "T1 Infantry"
         }).execute()
 
         supabase.table("account_status").insert({
@@ -67,6 +68,7 @@ def get_user_settings(username):
         .eq("username", username)
         .execute()
     )
+    print(result.data)
 
     if result.data:
         return result.data[0]
@@ -77,7 +79,7 @@ def get_user_settings(username):
         "auto_gathering": False,
         "auto_training": False,
         "auto_healing": False,
-        "auto_collecting": False,
+        "auto_collecting": False
     }
 
 def save_settings(
@@ -87,7 +89,8 @@ def save_settings(
     auto_gathering,
     auto_training,
     auto_healing,
-    auto_collecting
+    auto_collecting,
+    train_troop
 ):
 
     supabase.table("settings").upsert({
@@ -100,6 +103,7 @@ def save_settings(
         "auto_training": auto_training,
         "auto_healing": auto_healing,
         "auto_collecting": auto_collecting,
+        "train_troop": train_troop
 
 
     }).execute()
@@ -170,3 +174,4 @@ def email_exists(email):
     )
 
     return len(result.data) > 0
+
