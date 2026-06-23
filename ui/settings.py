@@ -88,13 +88,23 @@ class SettingsWindow:
             pady=(5,0)
             )
         
+        tk.Checkbutton(
+            train_frame,
+            text="Auto Training",
+            fg="#FFFFFF",
+            bg="#515151",
+            selectcolor="#515151",
+            activebackground="#515151",
+            activeforeground="#FFFFFF",
+            variable=self.auto_training
+        ).pack(side="left", padx=20, pady=5)
+        
         self.train_troop = ttk.Combobox(
             train_frame,
             textvariable= self.train_troop,
             state="readonly",
             width = 20,
             values=[
-                "None",
                 "T1 Infantry",
                 "T1 Ranged",
                 "T1 Cavalry",
@@ -122,6 +132,10 @@ class SettingsWindow:
             pady=5,
             side="right"
         )
+        #--------------------------------------
+        # auto gather
+        #--------------------------------------
+        
 
         tk.Checkbutton(
             root,
@@ -134,21 +148,6 @@ class SettingsWindow:
             variable=self.auto_gathering
         ).pack(anchor="w", padx=20, pady=5)
 
-        #--------------------------------------
-        # auto train
-        #--------------------------------------
-        
-        tk.Checkbutton(
-            train_frame,
-            text="Auto Training",
-            fg="#FFFFFF",
-            bg="#515151",
-            selectcolor="#515151",
-            activebackground="#515151",
-            activeforeground="#FFFFFF",
-            variable=self.auto_training
-        ).pack(side="left", padx=20, pady=5)
-        
 
         
         #----------------------------------------

@@ -17,6 +17,7 @@ from tasks.close_bundle import run as close_bundle
 from ui.launch_terminate import position_game
 from database.supabase_db import get_user_settings
 from tasks import check_shield
+from tasks import train_troops
 
 
 
@@ -75,9 +76,14 @@ class FarmingEngine:
                 break            
 
             #------------------------------------
-            # shielding
+            # training of troops
             #------------------------------------    
-                    
+            
+            if settings["auto_training"]:
+                train_troops.run(
+                    self.username
+            )
+
             print("Sending troops...")
 
             time.sleep(2)
@@ -86,7 +92,7 @@ class FarmingEngine:
                 break            
 
             #------------------------------------
-            # shielding
+            # gather rss
             #------------------------------------    
                     
             print("Gathering resources...")

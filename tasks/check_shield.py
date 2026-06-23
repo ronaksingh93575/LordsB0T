@@ -168,9 +168,31 @@ def run(username):
             time.sleep(2)
             Logger.log(image)
 
-            current_time = shield_to_seconds(
-                image[0]
-            )
+
+            shield_text = None
+            for text in image:
+                if re.search(
+                    r"(\d+d)?\s*\d{1,2}[.:]\d{2}[.:]\d{2}",
+                    text.lower()
+                ):
+                    shield_text = text
+                    break
+
+            if shield_text:
+
+                current_time = shield_to_seconds(
+                    image[0]
+                    )
+            else:
+                Logger.log("No valid time found")
+
+                execute()
+                return
+            
+            Logger.log(f"OCR Result: {image}")
+            Logger.log(f"Shield Timer: {shield_text}")              
+            
+                  
             update_shield_status(
                 username,
                 1,

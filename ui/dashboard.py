@@ -31,7 +31,7 @@ class Dashboard:
         self.log_queue = queue.Queue()
 
         self.root.title("Farming Bot Dashboard")
-        self.root.geometry("1024x576")
+        self.root.geometry("1024x768")
         self.root.resizable(True, True)
         self.root.configure(bg="#201E1E")
 
