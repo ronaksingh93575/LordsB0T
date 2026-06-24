@@ -17,7 +17,7 @@ def left():
     time.sleep(0.2)
     pyautogui.mouseDown()
     pyautogui.moveRel(
-        256,
+        400,
         0,
         duration=0.5,    
         )
@@ -39,7 +39,7 @@ def right():
     time.sleep(0.2)
     pyautogui.mouseDown()
     pyautogui.dragRel(
-        -256,
+        -400,
         0,
         duration=0.5,
     )

@@ -68,7 +68,7 @@ def get_user_settings(username):
         .eq("username", username)
         .execute()
     )
-    print(result.data)
+    # print(result.data)
 
     if result.data:
         return result.data[0]

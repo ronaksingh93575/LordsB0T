@@ -5,7 +5,7 @@ import pyautogui
 
 def find_image(
         image_path,
-        confidence=0.8
+        confidence=0.7
 ):
 
     screenshot = pyautogui.screenshot()
