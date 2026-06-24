@@ -17,7 +17,7 @@ from vision.image_finder import find_image
 from utils.drag_screen import right, left, up, down
 
 
-def run():
+def run(username):
     #pause for 2 sec
     Logger.log("confirming Home Screen")
     time.sleep(1)   
@@ -67,10 +67,13 @@ def run():
         return location_barracks
 
     search_moves = [
-        right,
-        lambda: left(2),
-        left,
-        down
+        right,right,
+        left,left,
+        left,left,
+        down,
+        right, right,
+        up
+
     ]
 
     location_barracks = find_barracks()
@@ -92,4 +95,3 @@ def run():
 
         Logger.log("Barracks opened")
         return
-run()
