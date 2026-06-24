@@ -197,8 +197,6 @@ class SettingsWindow:
             self.auto_training.set(settings["auto_training"])
             self.auto_healing.set(settings["auto_healing"])
             self.auto_collecting.set(settings["auto_collecting"])
-            print(settings)
-            print(settings.keys())
             self.train_troop.set(settings.get("train_troop",
                                           "T1 Infantry"))
 

@@ -15,7 +15,7 @@ def position_game():
         0,0
     )
     game.resizeTo(
-        1024,576
+        1026,615
     )
     game.activate()
     return True
