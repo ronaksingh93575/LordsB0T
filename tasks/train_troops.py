@@ -11,10 +11,13 @@ sys.path.append(
 
 import time
 import pyautogui
+import random
 from logs.logger import Logger
 from ui import settings
 from vision.image_finder import find_image
-from utils.drag_screen import right, left, up, down
+from vision.screenshot import capture_region
+from vision.ocr import read_image
+from utils.drag_screen import forward,backward
 
 
 def run(username):
@@ -66,32 +69,46 @@ def run(username):
             )
         return location_barracks
 
-    search_moves = [
-        right,right,
-        left,left,
-        left,left,
-        down,
-        right, right,
-        up
+    search_patterns = [[forward],[backward]]
 
-    ]
+
+    pattern = random.choice(search_patterns)
 
     location_barracks = find_barracks()
 
-    for move in search_moves:
+    for move in pattern:
 
-        if location_barracks:
-            break
+            if location_barracks:
+                break
 
-        move()
-        time.sleep(1)
+            move()
+            time.sleep(1)
 
-        location_barracks = find_barracks()
-    
+            location_barracks = find_barracks()
+
     if location_barracks:
-        Logger.log("Barracks Found")
+            Logger.log("Barracks Found")
 
-        pyautogui.click(location_barracks)
+            pyautogui.click(location_barracks)
 
-        Logger.log("Barracks opened")
-        return
+            Logger.log("Barracks opened")
+            return
+        
+    #----------------------------
+    # checking if trainng stats
+    #----------------------------
+
+    training_stats = capture_region(
+            545,
+            150,
+            51,
+            51     
+        )
+    training_stats = read_image(training_stats)
+
+    if training_stats:
+            Logger.log("Training going On")
+        
+    else:
+            Logger.log("No training Running")
+    

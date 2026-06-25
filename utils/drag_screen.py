@@ -14,7 +14,7 @@ def left():
         CENTER_Y
     )
 
-    time.sleep(0.2)
+    time.sleep(0.1)
     pyautogui.mouseDown()
     pyautogui.moveRel(
         400,
@@ -27,7 +27,7 @@ def left():
         CENTER_X,
         CENTER_Y
     )
-
+    
 
 def right():
 
@@ -36,10 +36,10 @@ def right():
         CENTER_Y
     )
 
-    time.sleep(0.2)
+    time.sleep(0.1)
     pyautogui.mouseDown()
     pyautogui.dragRel(
-        -400,
+        -250,
         0,
         duration=0.5,
     )
@@ -58,11 +58,11 @@ def up():
         CENTER_Y
     )
 
-    time.sleep(0.2)
+    time.sleep(0.1)
     pyautogui.mouseDown()
     pyautogui.dragRel(
         0,
-        288,
+        100,
         duration=0.5,
     )
     time.sleep(0.1)
@@ -79,11 +79,11 @@ def down():
         CENTER_Y
     )
 
-    time.sleep(0.2)
+    time.sleep(0.1)
     pyautogui.mouseDown()
     pyautogui.dragRel(
         0,
-        -288,
+        -100,
         duration=0.5,
     )
     time.sleep(0.1)
@@ -92,3 +92,41 @@ def down():
         CENTER_X,
         CENTER_Y
     )
+
+
+def forward():
+    [
+            up, up, up,up,
+            left,left,left,left,
+            down,
+            right,right,right,right,right,right,
+            down,
+            left, left, left, left,left,left,left,
+            down,
+            right,right,right,right,right,right,
+            down,
+            left, left, left, left,left,left,left,
+            down,
+            right,right,right,right,right,right,
+            down,
+            left, left, left, left,left,left,left,
+            down,
+        ]
+
+def backward(): 
+     [
+
+        up,
+        right, right, right, right, right, right, right,
+        up,
+        left, left, left, left, left, left,
+        up,
+        right, right, right, right, right, right, right,
+        up,
+        left, left, left, left, left, left,
+        up,
+        right, right, right, right, right, right, right,
+        up,
+        left, left, left, left,
+        down, down, down, down
+    ]
