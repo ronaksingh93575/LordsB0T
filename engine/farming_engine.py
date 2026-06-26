@@ -18,6 +18,7 @@ from ui.launch_terminate import position_game
 from database.supabase_db import get_user_settings
 from tasks import check_shield
 from tasks import train_troops
+from tasks import rewards
 
 
 
@@ -35,29 +36,30 @@ class FarmingEngine:
 
     def bot_loop(self):
 
+        #--------------------------------
+        # Window Set up
+        #--------------------------------
+        Logger.log("Setting Up things")
+        position_game()
+        time.sleep(2)
+
+        Logger.log("Adjusted Location and size..")
+        time.sleep(2)
+
+        time.sleep(5)
+
+        Logger.log("Searching bundle popup...")
+        close_bundle()
+        time.sleep(2)
+
         while self.running:
             
-            if not self.running:
-                break
+            # if not self.running:
+            #     break
 
-            #--------------------------------
-            # Window Set up
-            #--------------------------------
-            Logger.log("Setting Up things")
-            position_game()
-            time.sleep(2)
 
-            Logger.log("Adjusted Location and size..")
-            time.sleep(2)
-
-            time.sleep(5)
-
-            Logger.log("Searching bundle popup...")
-            close_bundle()
-            time.sleep(2)
-
-            if not self.running:
-                break
+            # if not self.running:
+            #     break
 
             #------------------------------------
             # shielding
@@ -86,7 +88,19 @@ class FarmingEngine:
                     self.username
             )
 
-            print("Sending troops...")
+            time.sleep(2)
+
+            if not self.running:
+                break            
+
+            #------------------------------------
+            # Collecting guild gifts
+            #------------------------------------    
+            
+            if settings["auto_collecting"]:
+                rewards.run(
+                    self.username
+            )
 
             time.sleep(2)
 

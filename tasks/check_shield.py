@@ -35,14 +35,14 @@ def run(username):
 
     image = capture_region(
         566,
-        302,
+        335,
         150,
         60,
     )
 
     image = read_image(image)
     Logger.log(image)
-    shield_time = None
+    # shield_time = None
 
     # for text in image:
     #     if re.match(r"\d{2}\.d{2}\.d{2}",text):
@@ -95,7 +95,7 @@ def run(username):
         except Exception:
             return 0
 
-    minimum_time = 8
+    minimum_time = 4
     desired_second = (minimum_time*3600)
     time.sleep(1)
 
@@ -128,8 +128,8 @@ def run(username):
 
             #applying shield
 
-            target_x = 763
-            target_y = 306
+            target_x = 782
+            target_y = 554
             pyautogui.click(x=target_x, y=target_y)
 
             #------------------------
@@ -145,7 +145,7 @@ def run(username):
             notice = read_image(notice)
             if notice:
                 target_x = 582
-                target_y = 287
+                target_y = 306
                 pyautogui.click(x=target_x, y = target_y)
             else:
                 pass

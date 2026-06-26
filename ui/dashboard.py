@@ -12,6 +12,7 @@ sys.path.append(
 import threading
 import tkinter as tk
 import queue
+import pywinstyles
 from tkinter import messagebox
 from engine.farming_engine import FarmingEngine
 from ui.launch_terminate import launch
@@ -34,6 +35,9 @@ class Dashboard:
         self.root.geometry("1024x768")
         self.root.resizable(False, False)
         self.root.configure(bg="#201E1E")
+
+
+        pywinstyles.apply_style(root, "mica")
 
         self.bot_running = False
 
