@@ -25,5 +25,6 @@ def run(username):
     time.sleep(1)
     pyautogui.click(guild)
 
+    for i in range()
 
         
