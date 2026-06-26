@@ -10,8 +10,6 @@ sys.path.append(
 )
 
 import tkinter as tk
-import sqlite3
-# from database.supabase_db import DATABASE_PATH
 from database.supabase_db import get_user_settings, save_settings
 from logs.logger import Logger
 from tkinter import ttk
@@ -26,7 +24,7 @@ class SettingsWindow:
 
         self.root.title("Bot Settings")
         self.root.geometry("500x500")
-        self.root.resizable(True, True)
+        self.root.resizable(False, False)
         self.root.configure(bg="#201E1E")
         
         self.check_shield       = tk.BooleanVar()
@@ -85,6 +83,7 @@ class SettingsWindow:
         )
         train_frame.pack(
             anchor="w",
+            fill="x",
             padx=20,
             pady=(5,0)
             )
@@ -197,6 +196,7 @@ class SettingsWindow:
         )
         merge_frame.pack(
             anchor="w",
+            fill="x",
             padx =20,
             pady= (5,0)
         )
@@ -249,6 +249,7 @@ class SettingsWindow:
         )
         darkness_frame.pack(
             anchor="w",
+            fill="x",
             padx =20,
             pady = (5,0)
         )
@@ -302,15 +303,17 @@ class SettingsWindow:
 
     def save(self):
         save_settings(
-            username            =   username,
+            username            =   self.username,
             check_shield        =   self.check_shield.get(),
             auto_colosseum      =   self.auto_colosseum.get(),
             auto_gathering      =   self.auto_gathering.get(),
             auto_training       =   self.auto_training.get(),
+            auto_healing        =   self.auto_healing.get(),
+            auto_collecting     =   self.auto_collecting.get(),
             train_troop         =   self.train_troop.get(),
             auto_merge          =   self.auto_merge.get(),
             pack_lv             =   self.pack_lv.get(),
-            auto_darkness       =   self.auto_darkness.get()
+            auto_darkness       =   self.auto_darkness.get(),
         )
 
         Logger.log("Settings saved successfully!")

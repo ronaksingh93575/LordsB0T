@@ -32,7 +32,7 @@ class Dashboard:
 
         self.root.title("Farming Bot Dashboard")
         self.root.geometry("1024x768")
-        self.root.resizable(True, True)
+        self.root.resizable(False, False)
         self.root.configure(bg="#201E1E")
 
         self.bot_running = False
