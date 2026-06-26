@@ -50,6 +50,8 @@ class FarmingEngine:
             Logger.log("Adjusted Location and size..")
             time.sleep(2)
 
+            time.sleep(5)
+
             Logger.log("Searching bundle popup...")
             close_bundle()
             time.sleep(2)

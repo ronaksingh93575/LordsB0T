@@ -34,11 +34,11 @@ def capture_region(
 #     return screenshot
 
 # image = capture_region(
-#     566,
-#     302,
-#     150,
-#     60,
+#                     745,
+#                     150,
+#                     150,
+#                     51 
 # )
 # image.save(
-#     "temp/shield.png"
+#     "temp/x.png"
 # )

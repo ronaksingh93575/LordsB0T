@@ -25,17 +25,18 @@ class SettingsWindow:
         self.username = username
 
         self.root.title("Bot Settings")
-        self.root.geometry("500x350")
+        self.root.geometry("500x500")
         self.root.resizable(True, True)
         self.root.configure(bg="#201E1E")
         
-        self.check_shield = tk.BooleanVar()
-        self.auto_colosseum = tk.BooleanVar()
-        self.auto_gathering = tk.BooleanVar()
-        self.auto_training = tk.BooleanVar()
-        self.auto_healing = tk.BooleanVar()
-        self.auto_collecting = tk.BooleanVar()
-        self.train_troop = tk.StringVar()
+        self.check_shield       = tk.BooleanVar()
+        self.auto_colosseum     = tk.BooleanVar()
+        self.auto_gathering     = tk.BooleanVar()
+        self.auto_healing       = tk.BooleanVar()
+        self.auto_collecting    = tk.BooleanVar()
+        self.auto_training      = tk.BooleanVar()
+        self.auto_merge         = tk.BooleanVar()
+        self.auto_darkness      = tk.BooleanVar()
 
         #--------------------------------------
         # shield
@@ -88,6 +89,8 @@ class SettingsWindow:
             pady=(5,0)
             )
         
+        self.train_troop= tk.StringVar()
+
         tk.Checkbutton(
             train_frame,
             text="Auto Training",
@@ -123,7 +126,8 @@ class SettingsWindow:
                 "T4 Infantry",
                 "T4 Ranged",
                 "T4 Cavalry",
-                "T4 Siege"
+                "T4 Siege",
+                
                 
                 ]
         )
@@ -180,6 +184,95 @@ class SettingsWindow:
             variable=self.auto_collecting
         ).pack(anchor="w", padx=20, pady=5)
 
+
+        #--------------------------------------
+        # creating a frame for merge
+        #--------------------------------------
+        
+        merge_frame = tk.LabelFrame(
+            self.root,
+            text="Merge",
+            fg = "#FFFFFF",
+            bg = "#515151"
+        )
+        merge_frame.pack(
+            anchor="w",
+            padx =20,
+            pady= (5,0)
+        )
+
+        #--------------------------------------
+        # auto merge
+        #--------------------------------------
+
+        self.pack_lv = tk.StringVar()
+        tk.Checkbutton(
+            merge_frame,
+            text = "Auto Merge",
+            fg ="#ffffff",
+            bg = "#515151",
+            selectcolor="#515151",
+            activebackground="#515151",
+            activeforeground="#FFFFFF",
+            variable= self.auto_merge
+        ).pack(side="left", padx= 20, pady=5)
+
+        self.pack_lv = ttk.Combobox(
+            merge_frame,
+            textvariable= self.pack_lv,
+            state = "readonly",
+            width = 20,
+            values=[
+                "Pack 1A",
+                "Pack 1B",
+                "Pack 2A",
+                "Pack 2B",
+                "Pack 3",
+                "Pack 4"
+            ]
+        )
+        self.pack_lv.pack(
+            padx =20,
+            pady = 5,
+            side = "right"
+        )
+
+        #--------------------------------------
+        # creating frame for rally darkness
+        #--------------------------------------
+
+        darkness_frame = tk.LabelFrame(
+            self.root,
+            text = "Darkness",
+            fg = "#FFFFFF",
+            bg = "#515151"
+        )
+        darkness_frame.pack(
+            anchor="w",
+            padx =20,
+            pady = (5,0)
+        )
+
+        #--------------------------------------
+        # auto join
+        #--------------------------------------
+
+        tk.Checkbutton(
+            darkness_frame,
+            text = "Auto Join",
+            fg ="#ffffff",
+            bg = "#515151",
+            selectcolor="#515151",
+            activebackground="#515151",
+            activeforeground="#FFFFFF",
+            variable = self.auto_darkness
+        ).pack(side="left", padx=20, pady= 5)
+
+
+        #--------------------------------------
+        # save settings
+        #--------------------------------------
+
         tk.Button(
             root,
             text="Save Settings",
@@ -197,19 +290,27 @@ class SettingsWindow:
             self.auto_training.set(settings["auto_training"])
             self.auto_healing.set(settings["auto_healing"])
             self.auto_collecting.set(settings["auto_collecting"])
+
             self.train_troop.set(settings.get("train_troop",
                                           "T1 Infantry"))
 
+            self.auto_merge.set(settings["auto_merge"])
+
+            self.pack_lv.set(settings.get("pack_lv",
+                                             "Pack 1A"))
+            self.auto_darkness.set(settings["auto_darkness"])
+
     def save(self):
         save_settings(
-            self.username,
-            self.check_shield.get(),
-            self.auto_colosseum.get(),
-            self.auto_gathering.get(),
-            self.auto_training.get(),
-            self.auto_healing.get(),
-            self.auto_collecting.get(),
-            self.train_troop.get()
+            username            =   username,
+            check_shield        =   self.check_shield.get(),
+            auto_colosseum      =   self.auto_colosseum.get(),
+            auto_gathering      =   self.auto_gathering.get(),
+            auto_training       =   self.auto_training.get(),
+            train_troop         =   self.train_troop.get(),
+            auto_merge          =   self.auto_merge.get(),
+            pack_lv             =   self.pack_lv.get(),
+            auto_darkness       =   self.auto_darkness.get()
         )
 
         Logger.log("Settings saved successfully!")

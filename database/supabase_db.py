@@ -31,10 +31,10 @@ def add_user(email, username, password):
         print("Creating user...")
 
         result = supabase.table("users").insert({
-            "email": email,
-            "username": username,
-            "password": password,
-            "role": "user",
+            "email"         : email,
+            "username"      : username,
+            "password"      : password,
+            "role"          : "user",
             "email_verified": False
         }).execute()
 
@@ -42,8 +42,9 @@ def add_user(email, username, password):
         print(result)
 
         supabase.table("settings").insert({
-            "username": username,
-            "train_troop" : "T1 Infantry"
+            "username"      : username,
+            "train_troop"   : "T1 Infantry",
+            "pack_lv"       : "Pack 1A"
         }).execute()
 
         supabase.table("account_status").insert({
@@ -68,18 +69,22 @@ def get_user_settings(username):
         .eq("username", username)
         .execute()
     )
-    # print(result.data)
+    print(result.data)
 
     if result.data:
         return result.data[0]
 
     return {
-        "check_shield" : False,
-        "auto_colloseum": False,
-        "auto_gathering": False,
-        "auto_training": False,
-        "auto_healing": False,
-        "auto_collecting": False
+        "check_shield"      : False,
+        "auto_colosseum"    : False,
+        "auto_gathering"    : False,
+        "auto_training"     : False,
+        "auto_healing"      : False,
+        "auto_collecting"   : False,
+        "train_troop"       : "T1 Infantry",
+        "auto_merge"        : False,
+        "pack_lv"           : "Pack 1A",
+        "auto_darkness"     : False
     }
 
 def save_settings(
@@ -90,20 +95,27 @@ def save_settings(
     auto_training,
     auto_healing,
     auto_collecting,
-    train_troop
+    train_troop,
+    auto_merge,
+    pack_lv,
+    auto_darkness
 ):
+    
 
     supabase.table("settings").upsert({
 
         "username": username,
 
-        "check_shield": check_shield,
-        "auto_colosseum": auto_colosseum,
-        "auto_gathering": auto_gathering,
-        "auto_training": auto_training,
-        "auto_healing": auto_healing,
-        "auto_collecting": auto_collecting,
-        "train_troop": train_troop
+        "check_shield"      : check_shield,
+        "auto_colosseum"    : auto_colosseum,
+        "auto_gathering"    : auto_gathering,
+        "auto_training"     : auto_training,
+        "auto_healing"      : auto_healing,
+        "auto_collecting"   : auto_collecting,
+        "train_troop"       : train_troop,
+        "auto_merge"        : auto_merge,
+        "pack_lv"           : pack_lv,
+        "auto_darkness"     : auto_darkness
 
 
     }).execute()

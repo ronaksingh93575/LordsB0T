@@ -9,6 +9,8 @@ sys.path.append(
     )
 )
 
+import time
+import pyautogui
 from logs.logger import Logger
 from vision.image_finder import find_image
 from vision.clicker import click
@@ -17,28 +19,36 @@ from vision.clicker import click
 def run():
 
     Logger.log(
-        "Searching bundle popup..."
+        "Searching popup..."
     )
 
-    location = find_image(
-        "images/close_bundle.png"
-    )
+    while True:
 
-    if location:
+        location = find_close()
 
-        click(
-            location[0],
-            location[1]
-        )
+        if not location:
+            break
+
+        pyautogui.click(location)
 
         Logger.log(
             "Bundle popup closed."
         )
 
-        return True
+        time.sleep(1)
 
     Logger.log(
         "Bundle popup not found."
         )
 
-    return False
+
+def find_close():
+    for i in range(1,7):
+        location = find_image(
+            f"images/close_{i}.png"
+        )
+
+        if location:
+            return location
+    
+    return None
