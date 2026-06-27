@@ -13,6 +13,7 @@ import threading
 import tkinter as tk
 import queue
 import pywinstyles
+import time
 from tkinter import messagebox
 from engine.farming_engine import FarmingEngine
 from ui.launch_terminate import launch
@@ -150,7 +151,6 @@ class Dashboard:
             text = "Start Automatic Tasks",
             width = 20,
             bg=("#ffffff"),
-
             command=self.start_automatic_task
         ).pack(side = "left", padx=20, pady=10)
 
@@ -255,6 +255,9 @@ class Dashboard:
 
             Logger.log("Bot Started.")
 
+        
+        time.sleep(30)
+        self.engine.start()
 
     def stop_bot(self):
 
@@ -271,6 +274,8 @@ class Dashboard:
             )
 
             Logger.log("Bot Stopped.")
+
+        
 
     def start_automatic_task(self):
 

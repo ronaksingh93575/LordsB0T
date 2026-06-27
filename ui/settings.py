@@ -71,10 +71,6 @@ class SettingsWindow:
         # creating a frame to train troops
         #--------------------------------------------------
 
-        #--------------------------------------
-        # auto train
-        #--------------------------------------
-
         train_frame = tk.LabelFrame(
             self.root,
             text="Training",
@@ -87,6 +83,10 @@ class SettingsWindow:
             padx=20,
             pady=(5,0)
             )
+
+        #--------------------------------------
+        # auto train
+        #--------------------------------------
         
         self.train_troop= tk.StringVar()
 
