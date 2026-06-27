@@ -17,7 +17,7 @@ from tasks.go_home import verify_home
 from vision.image_finder import find_image
 from tasks.back import execute
 
-def run():
+def run(username):
     time.sleep(2)
 
     #verify home screen
@@ -68,5 +68,3 @@ def run():
 
 
 
-
-run()

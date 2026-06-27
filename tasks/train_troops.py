@@ -35,17 +35,6 @@ def run(username):
 
         for i in range(1,5):
             location_map = find_image(f"images/kingdom_map_{i}.png")
-
-        # location_map = find_image("images/kingdom_map_1.png")
-
-        # if not location_map:
-        #     location_map = find_image("images/kingdom_map_2.png")
-
-        # if not location_map:
-        #     location_map = find_image("images/kingdom_map_3.png")
-
-        # if not location_map:
-        #     location_map = find_image("images/kingdom_map_4.png")
             if location_map:
                 return location_map
              
@@ -150,8 +139,6 @@ def run(username):
                         pyautogui.click(troop_type)
                         Logger.log("Troops Selected")
 
-
-
                     else:
                         for _ in range(3): #scroll down 3 times
 
@@ -198,4 +185,3 @@ def run(username):
             if not troop_type:
                  Logger.log("Selected troop not found")
                  execute()
-
