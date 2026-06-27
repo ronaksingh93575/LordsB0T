@@ -106,15 +106,6 @@ class Dashboard:
         )
         self.status_label.pack(pady=10)
 
-        self.shield_label = tk.Label(
-            control_frame,
-            text="Shield: Unknown",
-            fg="cyan",
-            bg="#000000",
-            font=("Arial", 10)
-        )
-        self.shield_label.pack(pady=5)
-
         start_btn = tk.Button(
             control_frame,
             text="Start Bot",
@@ -221,7 +212,6 @@ class Dashboard:
             "Welcome to the Farming Bot Dashboard!"
         )
 
-        self.load_shield_status()
 
     def add_log(self, message):
 
@@ -319,20 +309,3 @@ class Dashboard:
             100,
             self.process_logs
         )
-    def load_shield_status(self):
-
-        data = get_shield_status(
-            self.username
-        )
-        if not data:
-            return
-        shield_active, shield_time = data
-
-        if shield_active:
-            self.shield_label.config(
-                text = f"Shield : {shield_time}"
-            )
-        else:
-            self.shield_label.config(
-                text="Shield: Not Active"
-            )

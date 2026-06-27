@@ -44,7 +44,8 @@ def add_user(email, username, password):
         supabase.table("settings").insert({
             "username"      : username,
             "train_troop"   : "T1 Infantry",
-            "pack_lv"       : "Pack 1A"
+            "pack_lv"       : "Pack 1A",
+            "hunt_lv"       : "Lv 2"   
         }).execute()
 
         supabase.table("account_status").insert({
@@ -76,29 +77,37 @@ def get_user_settings(username):
 
     return {
         "check_shield"      : False,
+        "daily_task"        : False,
         "auto_colosseum"    : False,
         "auto_gathering"    : False,
         "auto_training"     : False,
+        "auto_crafting"     : False,
         "auto_healing"      : False,
         "auto_collecting"   : False,
         "train_troop"       : "T1 Infantry",
         "auto_merge"        : False,
         "pack_lv"           : "Pack 1A",
-        "auto_darkness"     : False
+        "auto_darkness"     : False,
+        "auto_hunting"      : False,
+        "hunt_lv"           : "Lv 2"
     }
 
 def save_settings(
     username,
     check_shield,
+    daily_task,
     auto_colosseum,
     auto_gathering,
     auto_training,
+    auto_crafting,
     auto_healing,
     auto_collecting,
     train_troop,
     auto_merge,
     pack_lv,
-    auto_darkness
+    auto_darkness,
+    auto_hunting,
+    hunt_lv
 ):
     
 
@@ -107,15 +116,19 @@ def save_settings(
         "username": username,
 
         "check_shield"      : check_shield,
+        "daily_task"        : daily_task,
         "auto_colosseum"    : auto_colosseum,
         "auto_gathering"    : auto_gathering,
         "auto_training"     : auto_training,
+        "auto_crafting"     : auto_crafting,
         "auto_healing"      : auto_healing,
         "auto_collecting"   : auto_collecting,
         "train_troop"       : train_troop,
         "auto_merge"        : auto_merge,
         "pack_lv"           : pack_lv,
-        "auto_darkness"     : auto_darkness
+        "auto_darkness"     : auto_darkness,
+        "auto_hunting"      : auto_hunting,
+        "hunt_lv"           : hunt_lv
 
 
     }).execute()

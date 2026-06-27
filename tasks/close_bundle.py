@@ -11,6 +11,7 @@ sys.path.append(
 
 import time
 import pyautogui
+from tasks.back import execute
 from logs.logger import Logger
 from vision.image_finder import find_image
 from vision.clicker import click
@@ -21,6 +22,9 @@ def run():
     Logger.log(
         "Searching popup..."
     )
+    execute()
+    time.sleep(1)
+    execute()
 
     while True:
 
@@ -43,7 +47,7 @@ def run():
 
 
 def find_close():
-    for i in range(1,7):
+    for i in range(1,8):
         location = find_image(
             f"images/close_{i}.png"
         )
