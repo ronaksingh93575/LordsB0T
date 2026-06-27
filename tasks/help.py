@@ -13,7 +13,7 @@ import pyautogui
 from logs.logger import Logger
 from vision.image_finder import find_image
 
-def help():
+def run():
     while True:
         press_help = find_image("images/help.png")
 

@@ -62,26 +62,22 @@ def run(username):
     time.sleep(2)
 
     def find_barracks():
-        location_barracks = find_image(
-            "images/barracks_lv25.png"
-        )
-        if not location_barracks:
-            location_barracks = find_image(
-                "images/barracks_lv15.png"
-            )
-        return location_barracks
-
-    search_patterns = [forward, backward]
+    
+        for i in range(1, 11):
+            location_barracks = find_image(f"images/barracks_{i}.png")
+            if location_barracks:
+                return location_barracks
+        return None
 
 
-    pattern = random.choice(search_patterns)
+    pattern = random.choice([forward(), backward()])
 
-    location_barracks = find_barracks()
-
-    if not location_barracks:
-         
-        pattern()
+    for move in pattern:
+        move()
+        time.sleep(1)
         location_barracks = find_barracks()
+        if location_barracks:
+            break
 
 
     if location_barracks:
@@ -172,6 +168,17 @@ def run(username):
                 time.sleep(1)
                 pyautogui.click(865,525)
                 time.sleep(1)
+                change_gear = find_image("images/change_gear.png")
+
+                if change_gear:
+                    time.sleep(1)
+                    pyautogui.click(change_gear)
+                    time.sleep(1)
+                    apply_gear = find_image("images/apply_gear.png")
+                    time.sleep(1)
+                    pyautogui.click(apply_gear)
+                    time.sleep(2)
+                    pyautogui.click(865,525)
                 
                 use_rss = find_image(
                      "images/use_rss.png"
@@ -181,6 +188,9 @@ def run(username):
                      time.sleep(2)
                 
                 Logger.log(f"Training of {troop_type} started")
+            execute()
+            time.sleep(1)
+            execute()
 
             if not troop_type:
                  Logger.log("Selected troop not found")

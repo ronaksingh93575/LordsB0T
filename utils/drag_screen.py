@@ -95,7 +95,7 @@ def down():
 
 
 def forward():
-    moves = [
+    return  [
             up, up, up,up,
             left,left,left,left,
             down,
@@ -112,14 +112,10 @@ def forward():
             left, left, left, left,left,left,left,
             down,
     ]
-    
-    for move in moves:
-        move()
-        time.sleep(1)
-        
+
 
 def backward(): 
-    moves = [
+    return [
 
         up,
         right, right, right, right, right, right, right,
@@ -135,6 +131,3 @@ def backward():
         left, left, left, left,
         down, down, down, down
     ]
-    for move in moves:
-        move()
-        time.sleep(1)
